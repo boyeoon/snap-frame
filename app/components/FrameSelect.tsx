@@ -5,17 +5,17 @@ import OneByTwoLayout from "../framelayout/OneByTwoLayout";
 import TwoByTwoLayout from "../framelayout/TwoByTwoLayout";
 
 interface FrameListProps {
-  videoSrc: MediaStream | null; // MediaStream으로 비디오 소스 설정
+  videoSrc: MediaStream | null; 
+  startCamera: () => Promise<void>; // 카메라 시작 함수 추가
 }
 
-// 프레임 목록
 const frames = [
   { id: 1, label: "1X4" },
   { id: 2, label: "2X2" },
   { id: 3, label: "테스트 3" }
 ];
 
-export default function FrameList({ videoSrc }: FrameListProps) {
+export default function FrameList({ videoSrc, startCamera }: FrameListProps) {
   const [selectedFrame, setSelectedFrame] = useState<number | null>(null);
 
   return (
@@ -34,16 +34,19 @@ export default function FrameList({ videoSrc }: FrameListProps) {
       {selectedFrame === 1 && (
         <OneByTwoLayout 
           videoSrc={videoSrc} 
-          label={`1X4 ${frames.find(frame => frame.id === selectedFrame)?.label}`} // 선택된 프레임 레이블 표시
+          // label={`${frames.find(frame => frame.id === selectedFrame)?.label}`} 
+          label={` `}
+          startCamera={startCamera} // 카메라 시작 함수 전달
         />
       )}
       
-      {selectedFrame === 2 && (
+      {/* {selectedFrame === 2 && (
         <TwoByTwoLayout 
           videoSrc={videoSrc} 
-          label={`2X2 ${frames.find(frame => frame.id === selectedFrame)?.label}`} // 선택된 프레임 레이블 표시
+          label={`${frames.find(frame => frame.id === selectedFrame)?.label} 프레임입니다.`} 
+          startCamera={startCamera} // 카메라 시작 함수 전달
         />
-      )}
+      )} */}
     </div>
   );
 }
