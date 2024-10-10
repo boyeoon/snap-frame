@@ -40,13 +40,14 @@ export default function FrameList({ videoSrc, startCamera }: FrameListProps) {
         />
       )}
       
-      {/* {selectedFrame === 2 && (
+      {selectedFrame === 2 && (
         <TwoByTwoLayout 
           videoSrc={videoSrc} 
-          label={`${frames.find(frame => frame.id === selectedFrame)?.label} 프레임입니다.`} 
+          // label={`${frames.find(frame => frame.id === selectedFrame)?.label} 프레임입니다.`} 
+          label={` `}
           startCamera={startCamera} // 카메라 시작 함수 전달
         />
-      )} */}
+      )}
     </div>
   );
 }
