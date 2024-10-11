@@ -2,7 +2,7 @@
 
 - [ko](app/docs/README_ko.md)
 
-웹사이트는 현재 [snap-frame](snap-frame.vercel.app)에서 호스팅되고 있습니다.
+The website is currently hosted at [snap-frame](snap-frame.vercel.app).
 
 This project is a web application that allows users to take photos with multiple cameras and download them. Users can activate their cameras, capture photos from each camera, and then download the entire frame.
 
@@ -50,7 +50,7 @@ This project is a web application that allows users to take photos with multiple
 3. Preview the captured photos and click the `Download` button to download the frame containing all photos.
 
 ## Tech Stack
-- [**Next.js**](https://nextjs.org/)
+- [**React**](https://react.dev/)
 - [**TypeScript**](https://www.typescriptlang.org/)
 - [**Tailwind CSS**](https://tailwindcss.com/)
 - [**html2canvas**](https://html2canvas.hertzen.com/)

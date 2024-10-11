@@ -1,6 +1,6 @@
 # Snap Frame
 
-The website is currently hosted at [snap-frame](snap-frame.vercel.app).
+웹사이트는 현재 [snap-frame](snap-frame.vercel.app)에서 호스팅되고 있습니다.
 
 이 프로젝트는 사용자가 여러 카메라로 사진을 찍고, 이를 다운로드할 수 있는 웹 애플리케이션입니다. 사용자는 카메라를 켜고, 각 카메라에서 사진을 찍은 후 전체 프레임을 다운로드할 수 있습니다.
 
@@ -49,7 +49,7 @@ The website is currently hosted at [snap-frame](snap-frame.vercel.app).
 3. 촬영된 사진을 미리보고, `Download` 버튼을 클릭하여 모든 사진을 포함한 프레임을 다운로드합니다.
 
 ## 기술 스택
-- [**Next.js**](https://nextjs.org/)
+- [**React**](https://react.dev/)
 - [**TypeScript**](https://www.typescriptlang.org/)
 - [**Tailwind CSS**](https://tailwindcss.com/)
 - [**html2canvas**](https://html2canvas.hertzen.com/)
