@@ -1,59 +1,62 @@
 # Snap Frame
 
-이 프로젝트는 사용자가 여러 카메라로 사진을 찍고, 이를 다운로드할 수 있는 웹 애플리케이션입니다. 사용자는 카메라를 켜고, 각 카메라에서 사진을 찍은 후 전체 프레임을 다운로드할 수 있습니다.
+- [ko](app/docs/README_ko.md)
 
-## 기능
+The website is currently hosted at [snap-frame](snap-frame.vercel.app).
 
-- **카메라 스트리밍**: 여러 카메라를 통해 실시간 비디오 스트림을 표시합니다.
-- **사진 촬영**: 각 카메라에서 사진을 촬영하고 미리보기 기능을 제공합니다.
-- **프레임 다운로드**: 선택한 모든 사진을 포함하는 프레임을 다운로드할 수 있습니다.
-- **배경색 선택**: 사용자가 검은색 또는 흰색 배경을 선택할 수 있습니다.
+This project is a web application that allows users to take photos with multiple cameras and download them. Users can activate their cameras, capture photos from each camera, and then download the entire frame.
 
-## 구성 파일
+## Features
+
+- **Camera Streaming**: Displays real-time video streams from multiple cameras.
+- **Photo Capture**: Captures photos from each camera and provides a preview feature.
+- **Frame Download**: Allows users to download a frame that includes all selected photos.
+- **Background Color Selection**: Users can choose between black or white backgrounds.
+
+## File Structure
 ### 1. Camera.tsx
-**역할**: 웹캠을 시작하고 비디오 스트림을 관리합니다.
+**Role**: Initializes the webcam and manages the video stream.
 
-**주요 기능**:
-- `startCamera`: 사용자의 카메라를 활성화하고 스트림을 가져와 상위 컴포넌트에 전달합니다.
-- 비디오 요소를 숨긴 상태로 스트림을 재생합니다.
+**Key Functions**:
+- `startCamera`: Activates the user’s camera and fetches the stream to pass to the parent component.
+- Plays the stream while keeping the video element hidden.
 
-## 2. FrameSelect.tsx
-**역할**: 프레임 선택 UI를 제공합니다.
+### 2. FrameSelect.tsx
+**Role**: Provides the UI for selecting the frame.
 
-**주요 기능**:
-- 드롭다운 메뉴에서 프레임을 선택할 수 있습니다.
-- 선택된 프레임에 따라 `OneByTwoLayout`, `TwoByTwoLayout` 또는 `...` 등의 컴포넌트를 렌더링합니다.
-- 선택된 프레임에 비디오 스트림을 전달합니다.
+**Key Functions**:
+- Allows frame selection via a dropdown menu.
+- Renders components such as `OneByTwoLayout`, `TwoByTwoLayout`, etc., based on the selected frame.
+- Passes the video stream to the selected frame.
 
+### 3. LifePhoto.tsx
+**Role**: The main component of the app that integrates camera and frame selection functionality.
 
-## 3. LifePhoto.tsx
-**역할**: 전체 앱의 주요 컴포넌트로 카메라와 프레임 선택 기능을 통합합니다.
+**Key Functions**:
+- Manages the `videoSrc` state to track the camera stream.
+- Captures photos and displays previews.
 
-**주요 기능**:
-- `videoSrc` 상태를 관리하여 카메라 스트림을 추적합니다.
-- 각 사진을 찍고 미리보기로 보여줍니다.
+### 4. OneByTwoLayout.tsx
+**Role**: Renders a 1x4 frame layout.
 
-## 4. OneByTwoLayout.tsx
-**역할**: 1x4 형태의 프레임 레이아웃을 렌더링합니다.
+**Key Functions**:
+- Manages individual camera activation for each video box.
+- Sets up the video stream and activates the camera on click.
+- Includes a button to capture photos and download the complete frame.
 
-**주요 기능**:
-- 각 비디오 박스에 대해 개별적으로 카메라를 시작할 수 있도록 관리합니다.
-- 비디오 스트림을 설정하고 클릭 시 카메라를 활성화합니다.
-- 각 카메라에서 사진을 찍고, 전체 프레임을 다운로드하는 버튼을 포함합니다.
+## How to Use
+1. Select the background color to change the frame's background.
+2. Click on each box to take a photo from the respective camera.
+3. Preview the captured photos and click the `Download` button to download the frame containing all photos.
 
-## 사용 방법
-1. 배경색을 선택하여 프레임의 배경색을 변경할 수 있습니다.
-2. 각 박스를 클릭하여 해당 카메라에서 사진을 촬영합니다.
-3. 촬영된 사진을 미리보고, `Download` 버튼을 클릭하여 모든 사진을 포함한 프레임을 다운로드합니다.
-
-## 기술 스택
+## Tech Stack
 - [**Next.js**](https://nextjs.org/)
 - [**TypeScript**](https://www.typescriptlang.org/)
 - [**Tailwind CSS**](https://tailwindcss.com/)
 - [**html2canvas**](https://html2canvas.hertzen.com/)
 - [**MediaDevices API**](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices)
 
-## 폴더 구조
+## Folder Structure
 ```
 /snap-frame
 ├── /app
@@ -72,5 +75,5 @@
 └── ...
 ```
 
-## 라이센스
-이 프로젝트는 [MIT 라이센스](https://mit-license.org/) 하에 배포됩니다.
+## License
+This project is licensed under the [MIT License](https://mit-license.org/).
