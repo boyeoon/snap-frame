@@ -71,6 +71,13 @@ export default function OneByTwoLayout({ videoSrc, label, startCamera }: FrameIt
     }
   };
 
+  // 현재 날짜 가져오기
+  const currentDate = new Date().toLocaleDateString("ko-KR", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).replace(/\./g, '.');
+
   return (
     <div>
       <div className="flex space-x-4 mb-4">
@@ -111,7 +118,7 @@ export default function OneByTwoLayout({ videoSrc, label, startCamera }: FrameIt
                 }}
                 className="absolute bottom-2 right-2 bg-blue-500 text-white py-1 px-2 rounded"
               >
-                사진 찍기
+                take a pic
               </button>
               {photos[index] && ( // 촬영된 사진이 있을 경우 미리보기
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -121,12 +128,17 @@ export default function OneByTwoLayout({ videoSrc, label, startCamera }: FrameIt
             </div>
           ))}
         </div>
+        <div className="flex justify-center mt-4">
+          <span className={`${isBlackBackground ? 'text-white' : 'text-black'} text-xs`}>
+            {currentDate}
+          </span>
+        </div>
       </div>
       <button 
         onClick={downloadFrame} 
         className="mt-4 bg-green-500 text-white py-2 px-4 rounded"
       >
-        다운로드
+        Download
       </button>
     </div>
   );
