@@ -14,10 +14,17 @@
   }
 } */
 
+@font-face {
+  font-family: "Hack Nerd Font";
+  src: url("/font/HackNerdFont-Regular.ttf") format("truetype"); /* 경로를 폰트 파일에 맞게 조정 */
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Hack Nerd Font";
 }
 
 @layer utilities {

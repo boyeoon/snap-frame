@@ -13,7 +13,7 @@ const config: Config = {
         foreground: "var(--foreground)",
       },
       fontFamily: {
-        pretendard: ['var(--font-pretendard)'],
+        hacknerdfont: ["Hack Nerd Font"],
       },
     },
   },
