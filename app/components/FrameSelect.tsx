@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import OneByTwoLayout from "../framelayout/OneByTwoLayout";
+import OneByFourLayout from "../framelayout/OneByFourLayout";
 import TwoByTwoLayout from "../framelayout/TwoByTwoLayout";
 
 interface FrameListProps {
@@ -32,7 +32,7 @@ export default function FrameList({ videoSrc, startCamera }: FrameListProps) {
       </select>
 
       {selectedFrame === 1 && (
-        <OneByTwoLayout 
+        <OneByFourLayout 
           videoSrc={videoSrc} 
           // label={`${frames.find(frame => frame.id === selectedFrame)?.label}`} 
           label={` `}
