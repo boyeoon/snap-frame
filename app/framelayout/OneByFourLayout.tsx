@@ -91,11 +91,11 @@ export default function OneByTwoLayout({ videoSrc, label, startCamera }: FrameIt
         <h1 className={`${isBlackBackground ? 'text-white' : 'text-black'} text-lg font-extrabold mb-3`}>
           SNAP FRAME
         </h1>
-        <div className="grid grid-cols-2 gap-2">
+        <div className="grid grid-cols-1 gap-2">
           {[...Array(4)].map((_, index) => (
             <div
               key={index}
-              className="relative w-64 h-80 flex items-center justify-center bg-orange-100 cursor-pointer"
+              className="relative w-72 h-60 flex items-center justify-center bg-orange-100 cursor-pointer"
               onClick={() => handleBoxClick(index)} // 박스 클릭 시 카메라 시작
             >
               <video
