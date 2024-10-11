@@ -10,8 +10,8 @@ interface FrameListProps {
 }
 
 const frames = [
-  { id: 1, label: "1X4" },
-  { id: 2, label: "2X2" },
+  { id: 1, label: "one by four" },
+  { id: 2, label: "two by two" },
   { id: 3, label: "테스트 3" }
 ];
 
@@ -25,7 +25,7 @@ export default function FrameList({ videoSrc, startCamera }: FrameListProps) {
         onChange={(e) => setSelectedFrame(Number(e.target.value))}
         defaultValue=""
       >
-        <option value="" disabled>프레임 선택하기</option>
+        <option value="" disabled>Select Frame</option>
         {frames.map(({ id, label }) => (
           <option key={id} value={id}>{label}</option>
         ))}
