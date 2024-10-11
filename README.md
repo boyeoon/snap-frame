@@ -2,7 +2,7 @@
 
 - [ko](app/docs/README_ko.md)
 
-The website is currently hosted at [snap-frame](snap-frame.vercel.app).
+웹사이트는 현재 [snap-frame](snap-frame.vercel.app)에서 호스팅되고 있습니다.
 
 This project is a web application that allows users to take photos with multiple cameras and download them. Users can activate their cameras, capture photos from each camera, and then download the entire frame.
 
