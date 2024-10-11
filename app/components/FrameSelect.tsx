@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import OneByFourLayout from "../framelayout/OneByFourLayout";
 import TwoByTwoLayout from "../framelayout/TwoByTwoLayout";
+import ThreeByOneLayout from "../framelayout/ThreeByOneLayout"
 
 interface FrameListProps {
   videoSrc: MediaStream | null; 
@@ -12,7 +13,7 @@ interface FrameListProps {
 const frames = [
   { id: 1, label: "one by four" },
   { id: 2, label: "two by two" },
-  { id: 3, label: "테스트 3" }
+  { id: 3, label: "three by one" }
 ];
 
 export default function FrameList({ videoSrc, startCamera }: FrameListProps) {
@@ -43,9 +44,16 @@ export default function FrameList({ videoSrc, startCamera }: FrameListProps) {
       {selectedFrame === 2 && (
         <TwoByTwoLayout 
           videoSrc={videoSrc} 
-          // label={`${frames.find(frame => frame.id === selectedFrame)?.label} 프레임입니다.`} 
           label={` `}
-          startCamera={startCamera} // 카메라 시작 함수 전달
+          startCamera={startCamera}
+        />
+      )}
+
+      {selectedFrame === 3 && (
+        <ThreeByOneLayout 
+          videoSrc={videoSrc} 
+          label={` `}
+          startCamera={startCamera}
         />
       )}
     </div>
