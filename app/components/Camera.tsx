@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from 'react';
+import React, { useRef } from "react";
 
 interface CameraProps {
   setVideoSrc: (src: MediaStream | null) => void; 
