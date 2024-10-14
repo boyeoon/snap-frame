@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --background: #f3f3f3;
+  --background: #F9F9E1;
   --foreground: #171717;
 }
 
@@ -14,9 +14,16 @@
   }
 } */
 
-@font-face {
+/* @font-face {
   font-family: "Hack Nerd Font";
-  src: url("/font/HackNerdFont-Regular.ttf") format("truetype"); /* 경로를 폰트 파일에 맞게 조정 */
+  src: url("/font/HackNerdFont-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+} */
+
+@font-face {
+  font-family: "Cafe24Meongi-B-v1.0";
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/Cafe24Meongi-B-v1.0.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
@@ -24,7 +31,12 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: "Hack Nerd Font";
+  font-family: "Cafe24Meongi-B-v1.0";
+  background-image: url("https://github.com/user-attachments/assets/612992cf-ef0e-4535-94d3-8fbd9167f0ac");
+  background-position: center; /* 가운데 정렬 */
+  background-repeat: no-repeat; /* 반복하지 않음 */
+  background-size: cover; /* 전체 영역을 채우기 */
+  background-attachment: fixed; /* 스크롤 시 고정 */
 }
 
 @layer utilities {

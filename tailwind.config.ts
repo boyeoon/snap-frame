@@ -13,7 +13,7 @@ const config: Config = {
         foreground: "var(--foreground)",
       },
       fontFamily: {
-        hacknerdfont: ["Hack Nerd Font"],
+        cafe24meongi: ["Cafe24Meongi-B-v1.0"],
       },
     },
   },
