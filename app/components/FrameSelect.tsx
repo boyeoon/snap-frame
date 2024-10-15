@@ -22,7 +22,7 @@ export default function FrameList({ videoSrc, startCamera }: FrameListProps) {
   return (
     <div className="flex flex-col items-center">
       <select 
-        className="mb-4 p-2 border rounded"
+        className="mb-8 p-2 outline-none border rounded-lg text-white bg-[#ca3c4a]/60"
         onChange={(e) => setSelectedFrame(Number(e.target.value))}
         defaultValue=""
       >
