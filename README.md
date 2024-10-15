@@ -1,27 +1,29 @@
 # Snap Frame
 
-- [ko](app/docs/README_ko.md)
+![frame-page](https://i.imgur.com/vkyhDw7.png)
 
 The website is currently hosted at [snap-frame](snap-frame.vercel.app).
 
-This project is a web application that allows users to take photos with multiple cameras and download them. Users can activate their cameras, capture photos from each camera, and then download the entire frame.
+This project is a web application that allows users to take photos using their webcam and download them. Users can activate the camera, select each frame, strike a pose, and capture their photos. After capturing, they can download all the selected frames.
+
+- [ko](app/docs/README_ko.md)
 
 ## Features
 
-- **Camera Streaming**: Displays real-time video streams from multiple cameras.
+- **Camera Streaming**: Displays a real-time video stream from the camera.
 - **Photo Capture**: Captures photos from each camera and provides a preview feature.
 - **Frame Download**: Allows users to download a frame that includes all selected photos.
 - **Background Color Selection**: Users can choose between black or white backgrounds.
 
 ## File Structure
-### 1. Camera.tsx
+### 1. `Camera.tsx`
 **Role**: Initializes the webcam and manages the video stream.
 
 **Key Functions**:
 - `startCamera`: Activates the user’s camera and fetches the stream to pass to the parent component.
 - Plays the stream while keeping the video element hidden.
 
-### 2. FrameSelect.tsx
+### 2. `FrameSelect.tsx`
 **Role**: Provides the UI for selecting the frame.
 
 **Key Functions**:
@@ -29,14 +31,14 @@ This project is a web application that allows users to take photos with multiple
 - Renders components such as `OneByTwoLayout`, `TwoByTwoLayout`, etc., based on the selected frame.
 - Passes the video stream to the selected frame.
 
-### 3. LifePhoto.tsx
+### 3. `LifePhoto.tsx`
 **Role**: The main component of the app that integrates camera and frame selection functionality.
 
 **Key Functions**:
 - Manages the `videoSrc` state to track the camera stream.
 - Captures photos and displays previews.
 
-### 4. OneByTwoLayout.tsx
+### 4. `OneByTwoLayout.tsx`
 **Role**: Renders a 1x4 frame layout.
 
 **Key Functions**:
