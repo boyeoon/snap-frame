@@ -81,15 +81,15 @@ export default function OneByTwoLayout({ videoSrc, label, startCamera }: FrameIt
   return (
     <div>
       <div className="flex space-x-4 mb-4">
-      <button
+        <button
           onClick={() => setIsBlackBackground(true)}
-          className={`py-2 px-4 rounded text-white ${isBlackBackground ? "bg-[#ca3c4a]" : "bg-[#ca3c4a]/60"}`}
+          className={`py-2 px-4 rounded text-white ${isBlackBackground ? "bg-[#ca3c4a]" : "bg-[#ca3c4a]/60"} shadow-lg hover:shadow-[#ca3c4a]/50`}
         >
           Black
         </button>
         <button
           onClick={() => setIsBlackBackground(false)}
-          className={`py-2 px-4 rounded text-white ${!isBlackBackground ? "bg-[#ca3c4a]" : "bg-[#ca3c4a]/60"}`}
+          className={`py-2 px-4 rounded text-white ${!isBlackBackground ? "bg-[#ca3c4a]" : "bg-[#ca3c4a]/60"} shadow-lg hover:shadow-[#ca3c4a]/50`}
         >
           White
         </button>
