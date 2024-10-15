@@ -23,7 +23,7 @@
 
 @font-face {
   font-family: "Cafe24Meongi-B-v1.0";
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/Cafe24Meongi-B-v1.0.woff2') format('woff2');
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/Cafe24Meongi-B-v1.0.woff2") format('woff2');
   font-weight: normal;
   font-style: normal;
 }
@@ -32,7 +32,7 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: "Cafe24Meongi-B-v1.0";
-  background-image: url("https://github.com/user-attachments/assets/612992cf-ef0e-4535-94d3-8fbd9167f0ac");
+  background-image: url("https://i.imgur.com/vvU5Z3c.png");
   background-position: center; /* 가운데 정렬 */
   background-repeat: no-repeat; /* 반복하지 않음 */
   background-size: cover; /* 전체 영역을 채우기 */
