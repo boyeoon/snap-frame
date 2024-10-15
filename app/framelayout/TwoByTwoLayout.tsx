@@ -104,7 +104,7 @@ export default function OneByTwoLayout({ videoSrc, label, startCamera }: FrameIt
           {[...Array(4)].map((_, index) => (
             <div
               key={index}
-              className="relative w-64 h-80 flex items-center justify-center bg-[#ffd3cd] hover:bg-[#ffd3cd]/60 cursor-pointer"
+              className="relative w-64 h-80 flex items-center justify-center bg-[#ffd3cd] hover:bg-[#FEE4E1] cursor-pointer"
               onClick={() => handleBoxClick(index)} // 박스 클릭 시 카메라 시작
             >
               <video
