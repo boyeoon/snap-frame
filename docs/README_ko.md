@@ -2,7 +2,7 @@
 
 ![frame-page](https://i.imgur.com/vkyhDw7.png)
 
-웹사이트는 현재 [snap-frame](snap-frame.vercel.app)에서 호스팅되고 있습니다.
+웹사이트는 현재 [snap-frame](https://snap-frame.vercel.app)에서 호스팅되고 있습니다.
 
 이 프로젝트는 사용자가 웹캠으로 사진을 찍고, 이를 다운로드할 수 있는 웹 어플리케이션입니다. 사용자는 카메라를 켜고, 각 프레임을 선택하여 포즈를 취한 뒤 카메라 버튼을 눌러 사진을 찍을 수 있습니다. 이후 전체 프레임을 다운로드할 수 있습니다.
 
