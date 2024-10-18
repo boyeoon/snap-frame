@@ -6,7 +6,7 @@ The website is currently hosted at [snap-frame](https://snap-frame.vercel.app).
 
 This project is a web application that allows users to take photos using their webcam and download them. Users can activate the camera, select each frame, strike a pose, and capture their photos. After capturing, they can download all the selected frames.
 
-- [ko](app/docs/README_ko.md)
+- [ko](docs/README_ko.md)
 
 ## Features
 
