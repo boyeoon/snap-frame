@@ -2,14 +2,13 @@
 
 ![frame-page](https://i.imgur.com/vkyhDw7.png)
 
-The website is currently hosted at [snap-frame](https://snap-frame.vercel.app).
+The website is currently hosted at [**snap-frame**](https://snap-frame.vercel.app).
 
 This project is a web application that allows users to take photos using their webcam and download them. Users can activate the camera, select each frame, strike a pose, and capture their photos. After capturing, they can download all the selected frames.
 
-- [ko](docs/README_ko.md)
+- [**Korean**](docs/README_ko.md)
 
 ## Features
-
 - **Camera Streaming**: Displays a real-time video stream from the camera.
 - **Photo Capture**: Captures photos from each camera and provides a preview feature.
 - **Frame Download**: Allows users to download a frame that includes all selected photos.
