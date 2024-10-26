@@ -77,7 +77,7 @@ export default function OneByTwoLayout({ videoSrc, label, startCamera }: FrameIt
     year: "numeric",
     month: "2-digit",
     day: "2-digit",
-  }).replace(/\./g, '.');
+  }).replace(/\./g, ".");
 
   return (
     <div>
@@ -86,18 +86,18 @@ export default function OneByTwoLayout({ videoSrc, label, startCamera }: FrameIt
           onClick={() => setIsBlackBackground(true)}
           className={`py-2 px-4 rounded text-white ${isBlackBackground ? "bg-[#ca3c4a]" : "bg-[#ca3c4a]/60"} shadow-lg hover:shadow-[#ca3c4a]/50`}
         >
-          Black
+          White
         </button>
         <button
           onClick={() => setIsBlackBackground(false)}
           className={`py-2 px-4 rounded text-white ${!isBlackBackground ? "bg-[#ca3c4a]" : "bg-[#ca3c4a]/60"} shadow-lg hover:shadow-[#ca3c4a]/50`}
         >
-          White
+          Black
         </button>
       </div>
-      <div id="frame" className={`px-5 pt-6 pb-5 border border-black ${isBlackBackground ? 'bg-black' : 'bg-white'}`}>
+      <div id="frame" className={`px-5 pt-6 pb-5 border border-black ${isBlackBackground ? "bg-white" : "bg-black"}`}>
         <div className="flex items-center justify-between mb-3">
-          <span className={`${isBlackBackground ? 'text-white' : 'text-black'} text-lg`}>
+          <span className={`${isBlackBackground ? "text-black" : "text-white"} text-lg`}>
             SNAP FRAME
           </span>
         </div>
@@ -117,7 +117,7 @@ export default function OneByTwoLayout({ videoSrc, label, startCamera }: FrameIt
           ))}
         </div>
         <div className="flex justify-center mt-4">
-          <span className={`${isBlackBackground ? 'text-white' : 'text-black'} text-xs`}>
+          <span className={`${isBlackBackground ? "text-black" : "text-white"} text-xs`}>
             {currentDate}
           </span>
         </div>
