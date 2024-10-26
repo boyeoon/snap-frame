@@ -66,7 +66,8 @@
 │   ├── /components
 │   │   ├── Camera.tsx
 │   │   ├── FrameSelect.tsx
-│   │   └── LifePhoto.tsx
+│   │   ├── LifePhoto.tsx
+│   │   └── VideoBox.tsx
 │   ├── /framelayout
 │   │   ├── OneByTwoLayout.tsx
 │   │   ├── TwoByTwoLayout.tsx

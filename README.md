@@ -66,7 +66,8 @@ This project is a web application that allows users to take photos using their w
 │   ├── /components
 │   │   ├── Camera.tsx
 │   │   ├── FrameSelect.tsx
-│   │   └── LifePhoto.tsx
+│   │   ├── LifePhoto.tsx
+│   │   └── VideoBox.tsx
 │   ├── /framelayout
 │   │   ├── OneByTwoLayout.tsx
 │   │   ├── TwoByTwoLayout.tsx
