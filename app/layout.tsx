@@ -10,8 +10,7 @@ import "./globals.css";
 // });
 
 export const metadata: Metadata = {
-  title: "Snap Frame",
-  description: "A web application that allows photo capture from live video streams, offers various background color options, and provides download functionality.",
+  title: "Snap Frame"
 };
 
 export default function RootLayout({
