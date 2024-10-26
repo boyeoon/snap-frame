@@ -7,12 +7,14 @@ interface VideoBoxProps {
   onClick: () => void;
   onTakePhoto: (index: number) => void;
   photo: string;
+  width: string;
+  height: string;
 }
 
-export default function VideoBox({ index, videoRef, label, onClick, onTakePhoto, photo }: VideoBoxProps) {
+export default function VideoBox({ index, videoRef, label, onClick, onTakePhoto, photo, width, height }: VideoBoxProps) {
   return (
     <div
-      className="relative w-72 h-60 flex items-center justify-center bg-[#ffd3cd] hover:bg-[#FEE4E1] cursor-pointer"
+      className={`relative ${width} ${height} flex items-center justify-center bg-[#ffd3cd] hover:bg-[#FEE4E1] cursor-pointer`}
       onClick={onClick}
     >
       <video
