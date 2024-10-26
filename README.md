@@ -1,6 +1,6 @@
 # Snap Frame
 
-![frame-page](https://i.imgur.com/vkyhDw7.png)
+![selete-snap-frame](https://i.imgur.com/Pszkoy2.png)
 
 The website is currently hosted at [**snap-frame**](https://snap-frame.vercel.app).
 

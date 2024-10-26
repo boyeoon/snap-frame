@@ -1,6 +1,6 @@
 # Snap Frame
 
-![frame-page](https://i.imgur.com/vkyhDw7.png)
+![selete-snap-frame](https://i.imgur.com/Pszkoy2.png)
 
 웹사이트는 현재 [snap-frame](https://snap-frame.vercel.app)에서 호스팅되고 있습니다.
 
