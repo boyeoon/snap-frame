@@ -8,7 +8,7 @@
 
 |   |   |   |
 |---|---|---|
-|[**英語**](README_ko.md)|[**韓国語**](docs/README_ko.md)|[**日本語**](docs/README_jp.md)|
+|[**英語**](/README.md)|[**韓国語**](/docs/README_ko.md)|[**日本語**](/docs/README_jp.md)|
 |   |   |   |
 
 ## 機能
