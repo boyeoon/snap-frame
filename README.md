@@ -13,6 +13,7 @@ This project is a web application that allows users to take photos using their w
 - **Photo Capture**: Captures photos from each camera and provides a preview feature.
 - **Frame Download**: Allows users to download a frame that includes all selected photos.
 - **Background Color Selection**: Users can choose between black or white backgrounds.
+- **Countdown and Flash Effect**: A countdown and flash effect have been added during photo capture to improve the shooting experience.
 
 ## File Structure
 ### 1. `Camera.tsx`
@@ -43,6 +44,7 @@ This project is a web application that allows users to take photos using their w
 **Key Functions**:
 - Manages individual camera activation for each video box.
 - Sets up the video stream and activates the camera on click.
+- The countdown and flash effect enhance the shooting experience.
 - Includes a button to capture photos and download the complete frame.
 
 ## How to Use
