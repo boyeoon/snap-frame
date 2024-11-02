@@ -1,16 +1,8 @@
 import type { Metadata } from "next";
-// import localFont from "next/font/local";
 import "./globals.css";
 
-// const pretendard = localFont({
-//   src: "./fonts/PretendardVariable.woff2",
-//   display: "swap",
-//   weight: "45 920",
-//   variable: "--font-pretendard",
-// });
-
 export const metadata: Metadata = {
-  title: "Snap Frame"
+  title: "Snap Frame",
 };
 
 export default function RootLayout({
@@ -21,11 +13,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <link rel="icon" href="/favicon.ico" sizes="any" />
-      <body
-        // className={`${pretendard.variable} font-pretendard`}
-      >
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
