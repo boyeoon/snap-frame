@@ -3,35 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --background: #F9F9E1;
+  --background: #f9f9e1;
   --foreground: #171717;
-}
-
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-} */
-
-/* @font-face {
-  font-family: "Hack Nerd Font";
-  src: url("/font/HackNerdFont-Regular.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-} */
-
-@font-face {
-  font-family: "Cafe24Meongi-B-v1.0";
-  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/Cafe24Meongi-B-v1.0.woff2") format('woff2');
-  font-weight: normal;
-  font-style: normal;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: "Cafe24Meongi-B-v1.0";
   background-image: url("https://i.imgur.com/vvU5Z3c.png");
   background-position: center; /* 가운데 정렬 */
   background-repeat: no-repeat; /* 반복하지 않음 */

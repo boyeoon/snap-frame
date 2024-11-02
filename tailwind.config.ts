@@ -13,7 +13,7 @@ const config: Config = {
         foreground: "var(--foreground)",
       },
       fontFamily: {
-        cafe24meongi: ["Cafe24Meongi-B-v1.0"],
+        cafeMeongi: ["var(--font-cafe-meongi)"],
       },
     },
   },
