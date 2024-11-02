@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import html2canvas from "html2canvas";
-import VideoBox from "../components/VideoBox";
+import VideoBox from "@/components/videoBox";
 
 interface FrameItemProps {
   videoSrc: MediaStream | null;
@@ -10,21 +10,27 @@ interface FrameItemProps {
   startCamera: (index: number) => Promise<void>;
 }
 
-export default function OneByTwoLayout({ videoSrc, label, startCamera }: FrameItemProps) {
+export default function OneByTwoLayout({
+  videoSrc,
+  label,
+  startCamera,
+}: FrameItemProps) {
   const videoRefs = useRef<(HTMLVideoElement | null)[]>(Array(4).fill(null)); // 비디오 요소에 대한 참조 배열 초기화
-  const [cameraStatus, setCameraStatus] = useState<boolean[]>(Array(4).fill(false));  // 각 비디오 박스의 카메라 상태(켜짐/꺼짐)를 관리
-  const [photos, setPhotos] = useState<string[]>(Array(4).fill(""));  // 촬영된 사진을 저장
-  const [isBlackBackground, setIsBlackBackground] = useState<boolean>(true);  // 배경색 상태를 관리
+  const [cameraStatus, setCameraStatus] = useState<boolean[]>(
+    Array(4).fill(false)
+  ); // 각 비디오 박스의 카메라 상태(켜짐/꺼짐)를 관리
+  const [photos, setPhotos] = useState<string[]>(Array(4).fill("")); // 촬영된 사진을 저장
+  const [isBlackBackground, setIsBlackBackground] = useState<boolean>(true); // 배경색 상태를 관리
   const [flash, setFlash] = useState<boolean>(false); // 플래시 사용 여부를 관리
-  const [countdown, setCountdown] = useState<number | null>(null);  // 카운트다운 타이머를 관리
+  const [countdown, setCountdown] = useState<number | null>(null); // 카운트다운 타이머를 관리
 
   useEffect(() => {
     videoRefs.current.forEach((videoRef, index) => {
       if (videoRef && videoSrc && cameraStatus[index]) {
-        videoRef.srcObject = videoSrc;  // 스트림 설정
+        videoRef.srcObject = videoSrc; // 스트림 설정
         videoRef.play();
       } else if (videoRef) {
-        videoRef.srcObject = null;  // 카메라 꺼짐 상태에서 비디오 스트림 해제
+        videoRef.srcObject = null; // 카메라 꺼짐 상태에서 비디오 스트림 해제
       }
     });
   }, [videoSrc, cameraStatus]);
@@ -34,7 +40,7 @@ export default function OneByTwoLayout({ videoSrc, label, startCamera }: FrameIt
       await startCamera(index); // 클릭한 박스의 카메라 시작
       setCameraStatus((prev) => {
         const newStatus = [...prev];
-        newStatus[index] = true;  // 클릭한 박스의 카메라 상태 업데이트
+        newStatus[index] = true; // 클릭한 박스의 카메라 상태 업데이트
         return newStatus;
       });
     }
@@ -42,7 +48,7 @@ export default function OneByTwoLayout({ videoSrc, label, startCamera }: FrameIt
 
   const handleTakePhoto = (index: number) => {
     setCountdown(3); // 카운트다운 시작
-  
+
     const countdownInterval = setInterval(() => {
       setCountdown((prev) => {
         if (prev === 1) {
@@ -75,7 +81,7 @@ export default function OneByTwoLayout({ videoSrc, label, startCamera }: FrameIt
         return newPhotos;
       });
     } else {
-      console.error("비디오가 아직 준비되지 않았습니다.");  // 비디오 상태 확인
+      console.error("비디오가 아직 준비되지 않았습니다."); // 비디오 상태 확인
     }
   };
 
@@ -93,31 +99,46 @@ export default function OneByTwoLayout({ videoSrc, label, startCamera }: FrameIt
   };
 
   // 현재 날짜 가져오기
-  const currentDate = new Date().toLocaleDateString("ko-KR", {
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  }).replace(/\./g, ".");
+  const currentDate = new Date()
+    .toLocaleDateString("ko-KR", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    })
+    .replace(/\./g, ".");
 
   return (
     <div className="relative">
       <div className="flex mb-4 space-x-4">
         <button
           onClick={() => setIsBlackBackground(true)}
-          className={`py-2 px-4 rounded text-white ${isBlackBackground ? "bg-[#ca3c4a]" : "bg-[#ca3c4a]/60"} shadow-lg hover:shadow-[#ca3c4a]/50`}
+          className={`py-2 px-4 rounded text-white ${
+            isBlackBackground ? "bg-[#ca3c4a]" : "bg-[#ca3c4a]/60"
+          } shadow-lg hover:shadow-[#ca3c4a]/50`}
         >
           White
         </button>
         <button
           onClick={() => setIsBlackBackground(false)}
-          className={`py-2 px-4 rounded text-white ${!isBlackBackground ? "bg-[#ca3c4a]" : "bg-[#ca3c4a]/60"} shadow-lg hover:shadow-[#ca3c4a]/50`}
+          className={`py-2 px-4 rounded text-white ${
+            !isBlackBackground ? "bg-[#ca3c4a]" : "bg-[#ca3c4a]/60"
+          } shadow-lg hover:shadow-[#ca3c4a]/50`}
         >
           Black
         </button>
       </div>
-      <div id="frame" className={`px-5 pt-6 pb-5 border border-black ${isBlackBackground ? "bg-white" : "bg-black"}`}>
+      <div
+        id="frame"
+        className={`px-5 pt-6 pb-5 border border-black ${
+          isBlackBackground ? "bg-white" : "bg-black"
+        }`}
+      >
         <div className="flex items-center justify-between mb-3">
-          <span className={`${isBlackBackground ? "text-black" : "text-white"} text-lg`}>
+          <span
+            className={`${
+              isBlackBackground ? "text-black" : "text-white"
+            } text-lg`}
+          >
             SNAP FRAME
           </span>
         </div>
@@ -126,7 +147,9 @@ export default function OneByTwoLayout({ videoSrc, label, startCamera }: FrameIt
             <VideoBox
               key={index}
               index={index}
-              videoRef={(el) => { videoRefs.current[index] = el; }}
+              videoRef={(el) => {
+                videoRefs.current[index] = el;
+              }}
               label={label}
               onClick={() => handleBoxClick(index)}
               onTakePhoto={handleTakePhoto}
@@ -148,15 +171,19 @@ export default function OneByTwoLayout({ videoSrc, label, startCamera }: FrameIt
         {flash && (
           <div className="fixed inset-0 z-40 transition-opacity duration-300 bg-white" />
         )}
-        
+
         <div className="flex justify-center mt-4">
-          <span className={`${isBlackBackground ? "text-black" : "text-white"} text-xs`}>
+          <span
+            className={`${
+              isBlackBackground ? "text-black" : "text-white"
+            } text-xs`}
+          >
             {currentDate}
           </span>
         </div>
       </div>
-      <button 
-        onClick={downloadFrame} 
+      <button
+        onClick={downloadFrame}
         className="mt-4 bg-[#ca3c4a] text-white py-2 px-4 rounded hover:bg-[#ca3c4a]/60 shadow-lg hover:shadow-[#ca3c4a]/50"
       >
         Download
