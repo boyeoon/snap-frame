@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
-import OneByFourLayout from "../framelayout/OneByFourLayout";
-import TwoByTwoLayout from "../framelayout/TwoByTwoLayout";
-import ThreeByOneLayout from "../framelayout/ThreeByOneLayout";
+import { useState } from "react";
+import OneByFourLayout from "@/framelayout/OneByFour";
+import TwoByTwoLayout from "@/framelayout/TwoByTwo";
+import ThreeByOneLayout from "@/framelayout/ThreeByOne";
 
 interface FrameListProps {
   videoSrc: MediaStream | null;

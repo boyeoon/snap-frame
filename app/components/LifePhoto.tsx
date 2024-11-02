@@ -1,7 +1,7 @@
 "use client";
 
-import FrameList from "./FrameSelect";
-import Camera from "./Camera";
+import FrameSelect from "@/components/frameSelect";
+import Camera from "@/components/camera";
 import { useState } from "react";
 
 export default function LifePhoto() {
@@ -17,7 +17,7 @@ export default function LifePhoto() {
   return (
     <div className="flex flex-col items-center p-4">
       <Camera setVideoSrc={setVideoSrc} />
-      <FrameList videoSrc={videoSrc} startCamera={startCamera} />
+      <FrameSelect videoSrc={videoSrc} startCamera={startCamera} />
     </div>
   );
 }

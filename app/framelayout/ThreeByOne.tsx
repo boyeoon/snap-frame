@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import html2canvas from "html2canvas";
 import VideoBox from "@/components/videoBox";
 

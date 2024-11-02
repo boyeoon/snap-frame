@@ -1,5 +1,3 @@
-import React from "react";
-
 interface VideoBoxProps {
   index: number;
   videoRef: React.RefCallback<HTMLVideoElement | null>;
