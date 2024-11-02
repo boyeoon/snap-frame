@@ -1,5 +1,5 @@
 import LifePhoto from "@/components/lifePhoto";
-import Footer from "@/components/footer/footer";
+import Footer from "@/components/footer";
 
 export default function Home() {
   return (
