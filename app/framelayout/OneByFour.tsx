@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { SketchPicker } from "react-color"; // react-color 라이브러리에서 SketchPicker 가져오기
 import html2canvas from "html2canvas";
 import VideoBox from "@/components/videoBox";
 
@@ -20,9 +21,10 @@ export default function OneByTwoLayout({
     Array(4).fill(false)
   ); // 각 비디오 박스의 카메라 상태(켜짐/꺼짐)를 관리
   const [photos, setPhotos] = useState<string[]>(Array(4).fill("")); // 촬영된 사진을 저장
-  const [isBlackBackground, setIsBlackBackground] = useState<boolean>(true); // 배경색 상태를 관리
+  const [backgroundColor, setBackgroundColor] = useState<string>("#ffffff"); // 기본 배경색을 흰색으로 설정
   const [flash, setFlash] = useState<boolean>(false); // 플래시 사용 여부를 관리
   const [countdown, setCountdown] = useState<number | null>(null); // 카운트다운 타이머를 관리
+  const [isPaletteVisible, setIsPaletteVisible] = useState<boolean>(false); // 색상 팔레트 표시 여부
 
   useEffect(() => {
     videoRefs.current.forEach((videoRef, index) => {
@@ -107,40 +109,40 @@ export default function OneByTwoLayout({
     })
     .replace(/\./g, ".");
 
+  // 색상 변경 함수
+  const handleColorChange = (color: any) => {
+    setBackgroundColor(color.hex); // 선택된 색상을 hex 형식으로 저장
+  };
+
   return (
     <div className="relative">
       <div className="flex mb-4 space-x-4">
+        {/* 배경색 버튼 클릭 시 색상 팔레트 토글 */}
         <button
-          onClick={() => setIsBlackBackground(true)}
-          className={`py-2 px-4 rounded text-white ${
-            isBlackBackground ? "bg-[#ca3c4a]" : "bg-[#ca3c4a]/60"
-          } shadow-lg hover:shadow-[#ca3c4a]/50`}
+          onClick={() => setIsPaletteVisible((prev) => !prev)} // 클릭 시 색상 팔레트 표시/숨김 토글
+          className={`py-2 px-4 rounded text-white bg-[#ca3c4a] shadow-lg hover:shadow-[#ca3c4a]/50`}
         >
-          White
-        </button>
-        <button
-          onClick={() => setIsBlackBackground(false)}
-          className={`py-2 px-4 rounded text-white ${
-            !isBlackBackground ? "bg-[#ca3c4a]" : "bg-[#ca3c4a]/60"
-          } shadow-lg hover:shadow-[#ca3c4a]/50`}
-        >
-          Black
+          Change Background Color
         </button>
       </div>
+
+      {/* 색상 팔레트가 표시될 때만 렌더링 */}
+      {isPaletteVisible && (
+        <div className="absolute top-16 left-0 z-50">
+          <SketchPicker
+            color={backgroundColor} // 초기 색상
+            onChangeComplete={handleColorChange} // 색상 변경 완료 시 호출
+          />
+        </div>
+      )}
+
       <div
         id="frame"
-        className={`px-5 pt-6 pb-5 border border-black ${
-          isBlackBackground ? "bg-white" : "bg-black"
-        }`}
+        className="px-5 pt-6 pb-5 border border-black"
+        style={{ backgroundColor: backgroundColor }} // 선택된 배경색 반영
       >
         <div className="flex items-center justify-between mb-3">
-          <span
-            className={`${
-              isBlackBackground ? "text-black" : "text-white"
-            } text-lg`}
-          >
-            SNAP FRAME
-          </span>
+          <span className="text-lg text-white">SNAP FRAME</span>
         </div>
         <div className="grid grid-cols-1 gap-2">
           {[...Array(4)].map((_, index) => (
@@ -173,15 +175,10 @@ export default function OneByTwoLayout({
         )}
 
         <div className="flex justify-center mt-4">
-          <span
-            className={`${
-              isBlackBackground ? "text-black" : "text-white"
-            } text-xs`}
-          >
-            {currentDate}
-          </span>
+          <span className="text-xs text-white">{currentDate}</span>
         </div>
       </div>
+
       <button
         onClick={downloadFrame}
         className="mt-4 bg-[#ca3c4a] text-white py-2 px-4 rounded hover:bg-[#ca3c4a]/60 shadow-lg hover:shadow-[#ca3c4a]/50"
