@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { TwitterPicker } from "react-color";
 import html2canvas from "html2canvas";
 import VideoBox from "@/components/videoBox";
 
@@ -20,20 +21,24 @@ export default function OneByTwoLayout({
     Array(4).fill(false)
   ); // 각 비디오 박스의 카메라 상태(켜짐/꺼짐)를 관리
   const [photos, setPhotos] = useState<string[]>(Array(4).fill("")); // 촬영된 사진을 저장
-  const [isBlackBackground, setIsBlackBackground] = useState<boolean>(true); // 배경색 상태를 관리
+  const [backgroundColor, setBackgroundColor] = useState<string>("#ffffff"); // 기본 배경색을 흰색으로 설정
+  const [textColor, setTextColor] = useState<string>("#000000");
   const [flash, setFlash] = useState<boolean>(false); // 플래시 사용 여부를 관리
   const [countdown, setCountdown] = useState<number | null>(null); // 카운트다운 타이머를 관리
+  const [isPaletteVisible, setIsPaletteVisible] = useState<boolean>(false); // 색상 팔레트 표시 여부
 
   useEffect(() => {
     videoRefs.current.forEach((videoRef, index) => {
       if (videoRef && videoSrc && cameraStatus[index]) {
-        videoRef.srcObject = videoSrc; // 스트림 설정
-        videoRef.play();
+        if (videoRef.srcObject !== videoSrc) {
+          videoRef.srcObject = videoSrc; // 스트림 설정
+          videoRef.play(); // 비디오 플레이
+        }
       } else if (videoRef) {
         videoRef.srcObject = null; // 카메라 꺼짐 상태에서 비디오 스트림 해제
       }
     });
-  }, [videoSrc, cameraStatus]);
+  }, [videoSrc, cameraStatus]); // videoSrc나 cameraStatus가 변경될 때만 실행
 
   const handleBoxClick = async (index: number) => {
     if (!cameraStatus[index]) {
@@ -107,38 +112,54 @@ export default function OneByTwoLayout({
     })
     .replace(/\./g, ".");
 
+  // 색상 변경 함수
+  const handleColorChange = (color: any) => {
+    setBackgroundColor(color.hex); // 선택된 색상을 hex 형식으로 저장
+  };
+
+  const toggleTextColor = () => {
+    setTextColor((prev) => (prev === "#000000" ? "#ffffff" : "#000000"));
+  };
+
   return (
     <div className="relative">
       <div className="flex mb-4 space-x-4">
+        {/* 배경색 버튼 클릭 시 색상 팔레트 토글 */}
         <button
-          onClick={() => setIsBlackBackground(true)}
-          className={`py-2 px-4 rounded text-white ${
-            isBlackBackground ? "bg-[#ca3c4a]" : "bg-[#ca3c4a]/60"
-          } shadow-lg hover:shadow-[#ca3c4a]/50`}
+          onClick={() => setIsPaletteVisible((prev) => !prev)} // 클릭 시 색상 팔레트 표시/숨김 토글
+          className={`py-2 px-4 rounded text-white bg-[#ca3c4a] shadow-lg hover:bg-[#ca3c4a]/60 hover:shadow-[#ca3c4a]/50`}
         >
-          White
+          Palette
         </button>
         <button
-          onClick={() => setIsBlackBackground(false)}
-          className={`py-2 px-4 rounded text-white ${
-            !isBlackBackground ? "bg-[#ca3c4a]" : "bg-[#ca3c4a]/60"
-          } shadow-lg hover:shadow-[#ca3c4a]/50`}
+          onClick={toggleTextColor}
+          className={`py-2 px-4 rounded ${
+            textColor === "#ffffff"
+              ? "bg-[#ca3c4a] shadow-lg hover:bg-[#ca3c4a]/60 hover:shadow-[#ca3c4a]/50"
+              : "bg-[#ca3c4a] shadow-lg hover:bg-[#ca3c4a]/60 hover:shadow-[#ca3c4a]/50"
+          } text-white`}
         >
-          Black
+          {textColor === "#000000" ? "Black" : "White"}
         </button>
       </div>
+
+      {/* 색상 팔레트가 표시될 때만 렌더링 */}
+      {isPaletteVisible && (
+        <div className="absolute top-16 left-0 z-50">
+          <TwitterPicker
+            color={backgroundColor} // 초기 색상
+            onChangeComplete={handleColorChange} // 색상 변경 완료 시 호출
+          />
+        </div>
+      )}
+
       <div
         id="frame"
-        className={`px-5 pt-6 pb-5 border border-black ${
-          isBlackBackground ? "bg-white" : "bg-black"
-        }`}
+        className="px-5 pt-6 pb-5 border border-black"
+        style={{ backgroundColor: backgroundColor }} // 선택된 배경색 반영
       >
         <div className="flex items-center justify-between mb-3">
-          <span
-            className={`${
-              isBlackBackground ? "text-black" : "text-white"
-            } text-lg`}
-          >
+          <span className="text-lg" style={{ color: textColor }}>
             SNAP FRAME
           </span>
         </div>
@@ -162,26 +183,25 @@ export default function OneByTwoLayout({
 
         {countdown !== null && (
           <div className="absolute inset-0 flex items-center justify-center text-5xl text-[#ca3c4a]">
-            <div className="p-8 bg-white opacity-90 rounded-2xl drop-shadow-lg">
+            <div className="absolute inset-0 bg-black opacity-60 z-30" />{" "}
+            {/* 어두운 반투명 배경 */}
+            <div className="p-8 bg-white opacity-90 rounded-2xl drop-shadow-lg z-40">
               {countdown}
             </div>
           </div>
         )}
 
         {flash && (
-          <div className="fixed inset-0 z-40 transition-opacity duration-300 bg-white" />
+          <div className="fixed inset-0 z-40 opacity-100 transition-opacity duration-200 bg-white ease-in-out" />
         )}
 
         <div className="flex justify-center mt-4">
-          <span
-            className={`${
-              isBlackBackground ? "text-black" : "text-white"
-            } text-xs`}
-          >
+          <span className="text-xs" style={{ color: textColor }}>
             {currentDate}
           </span>
         </div>
       </div>
+
       <button
         onClick={downloadFrame}
         className="mt-4 bg-[#ca3c4a] text-white py-2 px-4 rounded hover:bg-[#ca3c4a]/60 shadow-lg hover:shadow-[#ca3c4a]/50"
