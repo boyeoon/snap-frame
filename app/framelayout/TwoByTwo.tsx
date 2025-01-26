@@ -113,6 +113,7 @@ export default function OneByTwoLayout({
     .replace(/\./g, ".");
 
   // 색상 변경 함수
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleColorChange = (color: any) => {
     setBackgroundColor(color.hex); // 선택된 색상을 hex 형식으로 저장
   };
