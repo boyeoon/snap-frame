@@ -30,13 +30,15 @@ export default function OneByTwoLayout({
   useEffect(() => {
     videoRefs.current.forEach((videoRef, index) => {
       if (videoRef && videoSrc && cameraStatus[index]) {
-        videoRef.srcObject = videoSrc; // 스트림 설정
-        videoRef.play();
+        if (videoRef.srcObject !== videoSrc) {
+          videoRef.srcObject = videoSrc; // 스트림 설정
+          videoRef.play(); // 비디오 플레이
+        }
       } else if (videoRef) {
         videoRef.srcObject = null; // 카메라 꺼짐 상태에서 비디오 스트림 해제
       }
     });
-  }, [videoSrc, cameraStatus]);
+  }, [videoSrc, cameraStatus]); // videoSrc나 cameraStatus가 변경될 때만 실행
 
   const handleBoxClick = async (index: number) => {
     if (!cameraStatus[index]) {
@@ -179,16 +181,26 @@ export default function OneByTwoLayout({
           ))}
         </div>
 
-        {countdown !== null && (
+        {/* {countdown !== null && (
           <div className="absolute inset-0 flex items-center justify-center text-5xl text-[#ca3c4a]">
             <div className="p-8 bg-white opacity-90 rounded-2xl drop-shadow-lg">
+              {countdown}
+            </div>
+          </div>
+        )} */}
+
+        {countdown !== null && (
+          <div className="absolute inset-0 flex items-center justify-center text-5xl text-[#ca3c4a]">
+            <div className="absolute inset-0 bg-black opacity-60 z-30" />{" "}
+            {/* 어두운 반투명 배경 */}
+            <div className="p-8 bg-white opacity-90 rounded-2xl drop-shadow-lg z-40">
               {countdown}
             </div>
           </div>
         )}
 
         {flash && (
-          <div className="fixed inset-0 z-40 transition-opacity duration-300 bg-white" />
+          <div className="fixed inset-0 z-40 opacity-100 transition-opacity duration-200 bg-white ease-in-out" />
         )}
 
         <div className="flex justify-center mt-4">
