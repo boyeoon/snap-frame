@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { SketchPicker } from "react-color"; // react-color 라이브러리에서 SketchPicker 가져오기
+import { TwitterPicker } from "react-color";
 import html2canvas from "html2canvas";
 import VideoBox from "@/components/videoBox";
 
@@ -22,7 +22,7 @@ export default function OneByTwoLayout({
   ); // 각 비디오 박스의 카메라 상태(켜짐/꺼짐)를 관리
   const [photos, setPhotos] = useState<string[]>(Array(4).fill("")); // 촬영된 사진을 저장
   const [backgroundColor, setBackgroundColor] = useState<string>("#ffffff"); // 기본 배경색을 흰색으로 설정
-  const [textColor, setTextColor] = useState<string>("#ffffff");
+  const [textColor, setTextColor] = useState<string>("#000000");
   const [flash, setFlash] = useState<boolean>(false); // 플래시 사용 여부를 관리
   const [countdown, setCountdown] = useState<number | null>(null); // 카운트다운 타이머를 관리
   const [isPaletteVisible, setIsPaletteVisible] = useState<boolean>(false); // 색상 팔레트 표시 여부
@@ -116,7 +116,7 @@ export default function OneByTwoLayout({
   };
 
   const toggleTextColor = () => {
-    setTextColor((prev) => (prev === "#ffffff" ? "#000000" : "#ffffff")); // 색상 전환
+    setTextColor((prev) => (prev === "#000000" ? "#ffffff" : "#000000"));
   };
 
   return (
@@ -137,14 +137,14 @@ export default function OneByTwoLayout({
               : "bg-[#ca3c4a] shadow-lg hover:bg-[#ca3c4a]/60 hover:shadow-[#ca3c4a]/50"
           } text-white`}
         >
-          {textColor === "#ffffff" ? "White" : "Black"}
+          {textColor === "#000000" ? "Black" : "White"}
         </button>
       </div>
 
       {/* 색상 팔레트가 표시될 때만 렌더링 */}
       {isPaletteVisible && (
         <div className="absolute top-16 left-0 z-50">
-          <SketchPicker
+          <TwitterPicker
             color={backgroundColor} // 초기 색상
             onChangeComplete={handleColorChange} // 색상 변경 완료 시 호출
           />
