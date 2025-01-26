@@ -22,6 +22,7 @@ export default function OneByTwoLayout({
   ); // 각 비디오 박스의 카메라 상태(켜짐/꺼짐)를 관리
   const [photos, setPhotos] = useState<string[]>(Array(4).fill("")); // 촬영된 사진을 저장
   const [backgroundColor, setBackgroundColor] = useState<string>("#ffffff"); // 기본 배경색을 흰색으로 설정
+  const [textColor, setTextColor] = useState<string>("#ffffff");
   const [flash, setFlash] = useState<boolean>(false); // 플래시 사용 여부를 관리
   const [countdown, setCountdown] = useState<number | null>(null); // 카운트다운 타이머를 관리
   const [isPaletteVisible, setIsPaletteVisible] = useState<boolean>(false); // 색상 팔레트 표시 여부
@@ -114,15 +115,29 @@ export default function OneByTwoLayout({
     setBackgroundColor(color.hex); // 선택된 색상을 hex 형식으로 저장
   };
 
+  const toggleTextColor = () => {
+    setTextColor((prev) => (prev === "#ffffff" ? "#000000" : "#ffffff")); // 색상 전환
+  };
+
   return (
     <div className="relative">
       <div className="flex mb-4 space-x-4">
         {/* 배경색 버튼 클릭 시 색상 팔레트 토글 */}
         <button
           onClick={() => setIsPaletteVisible((prev) => !prev)} // 클릭 시 색상 팔레트 표시/숨김 토글
-          className={`py-2 px-4 rounded text-white bg-[#ca3c4a] shadow-lg hover:shadow-[#ca3c4a]/50`}
+          className={`py-2 px-4 rounded text-white bg-[#ca3c4a] shadow-lg hover:bg-[#ca3c4a]/60 hover:shadow-[#ca3c4a]/50`}
         >
-          Change Background Color
+          Palette
+        </button>
+        <button
+          onClick={toggleTextColor}
+          className={`py-2 px-4 rounded ${
+            textColor === "#ffffff"
+              ? "bg-[#ca3c4a] shadow-lg hover:bg-[#ca3c4a]/60 hover:shadow-[#ca3c4a]/50"
+              : "bg-[#ca3c4a] shadow-lg hover:bg-[#ca3c4a]/60 hover:shadow-[#ca3c4a]/50"
+          } text-white`}
+        >
+          {textColor === "#ffffff" ? "White" : "Black"}
         </button>
       </div>
 
@@ -142,7 +157,9 @@ export default function OneByTwoLayout({
         style={{ backgroundColor: backgroundColor }} // 선택된 배경색 반영
       >
         <div className="flex items-center justify-between mb-3">
-          <span className="text-lg text-white">SNAP FRAME</span>
+          <span className="text-lg" style={{ color: textColor }}>
+            SNAP FRAME
+          </span>
         </div>
         <div className="grid grid-cols-1 gap-2">
           {[...Array(4)].map((_, index) => (
@@ -175,7 +192,9 @@ export default function OneByTwoLayout({
         )}
 
         <div className="flex justify-center mt-4">
-          <span className="text-xs text-white">{currentDate}</span>
+          <span className="text-xs" style={{ color: textColor }}>
+            {currentDate}
+          </span>
         </div>
       </div>
 
